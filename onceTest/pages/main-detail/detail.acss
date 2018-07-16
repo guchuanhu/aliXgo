@@ -1,0 +1,100 @@
+
+.top{
+    padding: 28.08rpx 70rpx;
+    background-color: white;
+}
+.top view{
+    margin-bottom: 16.38rpx;
+    font-size: 21.06rpx;
+    color: rgb(136, 136, 136);
+}
+.foot{
+    margin-top: 20rpx;
+    padding: 28.08rpx 93.6rpx;
+    background-color: white;
+}
+.foot .text{
+    line-height: 30rpx;
+    position: relative;
+    padding-left: 90rpx;
+    height: 120rpx;
+}
+.foot .one{
+    display: block;
+    font-size: 28.08rpx;
+    position: relative;
+    top: 25rpx;
+}
+.foot .two{
+    display: block;
+    font-size: 25.06rpx;
+    color: rgb(136, 136, 136);
+    position: relative;
+    top: 25rpx;
+}
+.foot .showB::after{
+    position: absolute;
+    left: 16rpx;
+    bottom: 0;
+    display: block;
+    content: "";
+    height: 60rpx;
+    width: 4rpx;
+    background-color: rgb(16, 136, 228);
+}
+.foot .showT::before{
+    position: absolute;
+    left: 16rpx;
+    display: block;
+    content: "";
+    height: 25rpx;
+    width: 4rpx;
+    background-color: rgb(16, 136, 228);
+}
+.foot .showBN::after{
+    position: absolute;
+    left: 16rpx;
+    bottom: 0;
+    display: block;
+    content: "";
+    height: 60rpx;
+    width: 4rpx;
+    background-color: rgb(136, 136, 136);
+}
+.foot .showTN::before{
+    position: absolute;
+    left: 16rpx;
+    display: block;
+    content: "";
+    height: 25rpx;
+    width: 4rpx;
+    background-color: rgb(136, 136, 136);
+}
+.noShowB::after{
+    content: '';
+    width: 0!important;
+    height: 0!important;
+}
+.noShowT::before{
+    content: '';
+    width: 0!important;
+    height: 0!important;
+}
+.foot .show{
+    position: absolute;
+    left: 0;
+    width: 90rpx;
+    height: 120rpx;
+}
+.img{
+    position: absolute;
+    top: 25rpx;
+    width: 36rpx;
+    height: 36rpx;
+}
+
+
+.none{
+    text-align: center;
+    margin-top: 300rpx;
+}

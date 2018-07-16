@@ -1,0 +1,25 @@
+<view class="container">
+    <view onTap="faultOpen" data-topIndex="{{index}}" a:for="{{phone}}" class="fault {{item.choice?'fault-choice':''}}">
+        <view class="fault-title">{{item.topName}}</view>
+        <view class="fault-content">
+            <text a:for="{{item.detail}}">{{item.detailName}} </text>
+        </view>
+    </view>
+</view>
+
+<view class="submit">
+    <text a:if="{{fault.dollar.total}}" class="sub_word">
+        预计维修金额：
+        <text class="money_color">
+            <text class="money">¥{{fault.dollar.totalF}}</text>
+            .{{fault.dollar.totalL}}
+        </text>
+    </text>
+    <text a:if="{{!fault.dollar.total}}" class="sub_word">
+        选择故障，查看报价
+    </text>
+    <button class="sub_btn {{fault.dollar.total?'':'sub_btn_ban'}}" onTap="phone" > 提交订单 </button>
+</view>
+
+<import src="../../template/faultBox/fault-box.axml"/>
+<template is="fault-box" data="{{fault: fault}}"/>

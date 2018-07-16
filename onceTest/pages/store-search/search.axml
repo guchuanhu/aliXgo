@@ -1,0 +1,35 @@
+<view class="container">
+    <view class="box">
+        <view class="line"></view>
+        <view onTap="locationOpen" class="input">
+            <text>所在地区：</text>
+            <input disabled="true" value="{{catName?(catName.length===3?(catName[0]+' '+catName[1]+' '+catName[2]):''):''}}" />
+            <view class="location">{{cat.item.name?'':'请选择'}}</view>
+        </view>
+
+        <view class="line"></view>
+        <view a:if="{{!noLocation}}">
+            <view class="position">
+                <view class="text1">{{location.name}}</view>
+                <view class="text2">{{location.address}}</view>
+            </view>
+            <view class="posi-box">
+                <view onTap="makePhoneCall" class="posi-left">电话联系</view>
+                <view onTap="mapFn" class="posi-right">地图导航</view>
+            </view>
+            <map a:if="{{mapShow}}" class="map" longitude="{{location.longitude}}" latitude="{{location.latitude}}" id="userMap" show-location />
+        </view>
+        <view class="text_apology" a:if="{{noLocation}}">
+            <view>
+                非常抱歉，修狗业务还未覆盖该城市。您可以选择临近城市的寄修服务。
+            </view>
+            <view class="color_apology">
+                PS：全国有六百余个城市，目前修狗已完成一百+城市的业务覆盖，修狗坚信不久的将来一定可以为您带来更完善的服务！
+            </view>
+        </view>
+
+    </view>
+</view>
+
+<import src="../../template/locationBox/location-box.axml"/>
+<template is="location-box" data="{{cat: cat}}"/>

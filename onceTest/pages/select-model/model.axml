@@ -1,0 +1,12 @@
+<view class="container">
+    <view class="word">如果您不确定故障手机的品牌请选择其他品牌</view>
+    <view class="lists">
+        <view class="li_box {{(index+1)>phone.length-3?'':'li_border_btn'}}" a:for="{{phone}}">
+            <view onTap="phone" data-id="{{item.id}}" data-name="{{item.name}}" class="li {{(index+1)%3===0?'':'li_border'}} ">
+                <image a:if="{{item.id!==false}}" class="img" src="{{item.wapPic}}" mode="" />
+                <view a:if="{{item.id!==false}}">{{item.id==='89'?'其他品牌':item.name}}</view>
+            </view>
+
+        </view>
+    </view>
+</view>

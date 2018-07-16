@@ -1,0 +1,145 @@
+<view class="container">
+    <view class="head">
+        <view class="text">{{maintenanceData.server.name}}</view>
+        <view onTap="goStoreSearch" class="loca_change">{{maintenanceData.server.name?'':'请选择'}}</view>
+        <view class="text">{{maintenanceData.selectModel.name}} {{maintenanceData.phoneModel.name}}</view>
+        <view class="covering_position"></view>
+        <view a:for="{{maintenanceData.phoneFault.phone}}">
+            <view a:if="{{index<2}}" class="li">
+                <view class="left">{{item.detailName}}</view>
+                <view class="right"> ￥{{item.totalF}}.{{item.totalL}}</view>
+            </view>
+            <view a:if="{{index>=2}}" class="li {{phoneFault?'':'disno'}}">
+                <view class="left">{{item.detailName}}</view>
+                <view class="right"> ￥{{item.totalF}}.{{item.totalL}}</view>
+            </view>
+        </view>
+        <view a:if="{{maintenanceData.phoneFault.phone.length>2}}" class="li li_fix">
+            <view a:if="{{phoneFault}}" onTap="showFault" class="right up">收起</view>
+            <view a:if="{{!phoneFault}}" onTap="showFault" class="right down">展开</view>
+        </view>
+    </view>
+
+    <view class="main">
+        <view onTap="changeMainten" data-index="{{index}}" a:for="{{mainten.detail}}" class="main_li {{index===2?'main_li_right':''}} {{mainten.choice===index?'item':''}}">
+            <view class="font24 marb8">{{item.name}}</view>
+            <view class="font18">{{item.word}}</view>
+        </view>
+    </view>
+    
+    <view a:if="{{mainten.detail[mainten.choice].id==='S'}}" class="box">
+        <view class="input">
+            <text>联系人</text>
+            <input onBlur="bindData" data-set="customer.S.name" value="{{customer.S.name}}" placeholder="请输入您的姓名" />
+        </view>
+        <view class="input">
+            <text>联系电话</text>
+            <input onBlur="bindData" data-set="customer.S.tel" value="{{customer.S.tel}}" placeholder="请输入您的手机号码" />
+            <view onTap="getCode" data-main="{{mainten.detail[mainten.choice].id}}" value="mainten.detail[mainten.choice].id" class="btn_code {{mainten.detail[mainten.choice].text!=='获取验证码'?'btn_codeing':''}}" > {{ mainten.detail[mainten.choice].text }} </view>
+        </view>
+        <view class="input">
+            <text>验证码</text>
+            <input onBlur="bindData" data-set="customer.S.code" value="{{customer.S.code}}" placeholder="请输入您的短信验证码" />
+        </view>
+
+
+        <view onTap="locationOpen" data-index="0" data-type="{{mainten.detail[mainten.choice].id}}" class="input">
+            <text>区域选择</text>
+            <input disabled="true" value="{{customer.cat[0].item.name?(customer.cat[0].item.name.length===3?(customer.cat[0].item.name[0]+' '+customer.cat[0].item.name[1]+' '+customer.cat[0].item.name[2]):''):''}}" />
+            <view class="location">{{customer.cat[0].item.name?(customer.cat[0].item.name.length===3?'':'请选择'):'请选择'}}</view>
+        </view>
+
+
+        <view class="input border0">
+            <text>详细地址</text>
+            <input class="detail_input" onBlur="bindData" data-set="customer.S.address" value="{{customer.S.address}}"  placeholder="请输入您的详细地址" />
+        </view>
+
+        <view class="line"></view>
+        <view onTap="pickOpen" data-index="0" class="input border0">
+            <text>上门时间</text>
+            <input disabled="true" value="{{currentPicker[0].name}}" placeholder="请选择上门服务时间" />
+        </view>
+
+        <view class="line"></view>
+        <view class="input textarea border0">
+            <text>备注</text>
+            <textarea onBlur="bindData" data-set="customer.S.other" style="font-size:25rpx;padding-top:20rpx;" placeholder="在这里写下您想对维修工程师说的话~~~" />
+        </view>
+    </view>
+
+
+
+    <view a:if="{{mainten.detail[mainten.choice].id==='D'}}" class="box">
+        <view class="input">
+            <text>联系人</text>
+            <input onBlur="bindData" data-set="customer.D.name" value="{{customer.D.name}}" placeholder="请输入您的姓名" />
+        </view>
+        <view class="input">
+            <text>联系电话</text>
+            <input onBlur="bindData" data-set="customer.D.tel" value="{{customer.D.tel}}" placeholder="请输入您的手机号码" />
+            <view onTap="getCode" data-main="{{mainten.detail[mainten.choice].id}}" value="mainten.detail[mainten.choice].id" class="btn_code {{mainten.detail[mainten.choice].text!=='获取验证码'?'btn_codeing':''}}" > {{ mainten.detail[mainten.choice].text }} </view>
+            
+        </view>
+        <view class="input">
+            <text>验证码</text>
+            <input onBlur="bindData" data-set="customer.D.code" value="{{customer.D.code}}" placeholder="请输入您的短信验证码" />
+        </view>
+    </view>
+
+
+
+    <view a:if="{{mainten.detail[mainten.choice].id==='J'}}" class="box">
+        <view class="input">
+            <text>联系人</text>
+            <input onBlur="bindData" data-set="customer.J.name" value="{{customer.J.name}}" placeholder="请输入您的姓名" />
+        </view>
+        <view class="input">
+            <text>联系电话</text>
+            <input onBlur="bindData" data-set="customer.J.tel" value="{{customer.J.tel}}" placeholder="请输入您的手机号码" />
+            <view onTap="getCode" data-main="{{mainten.detail[mainten.choice].id}}" value="mainten.detail[mainten.choice].id" class="btn_code {{mainten.detail[mainten.choice].text!=='获取验证码'?'btn_codeing':''}}" > {{ mainten.detail[mainten.choice].text }} </view>
+        </view>
+        <view class="input">
+            <text>验证码</text>
+            <input onBlur="bindData" data-set="customer.J.code" value="{{customer.J.code}}" placeholder="请输入您的短信验证码" />
+        </view>
+
+        <view class="input">
+            <text>IMEI号</text>
+            <input onBlur="bindData" data-set="customer.J.imei" value="{{customer.J.imei}}" placeholder="请输入IMEI号" />
+        </view>
+
+        <view onTap="locationOpen" data-index="1" class="input">
+            <text>回寄区域</text>
+            <input disabled="true" value="{{customer.cat[1].item.name?(customer.cat[1].item.name.length===3?(customer.cat[1].item.name[0]+' '+customer.cat[1].item.name[1]+' '+customer.cat[1].item.name[2]):''):''}}" />
+            <view class="location">{{customer.cat[1].item.name?(customer.cat[1].item.name.length===3?'':'请选择'):'请选择'}}</view>
+        </view>
+        <view class="input border0">
+            <text>详细地址</text>
+            <input onBlur="bindData" data-set="customer.J.address" value="{{customer.J.address}}" placeholder="请输入您的详细地址" />
+        </view>
+
+        <view class="line"></view>
+        <view class="input textarea border0">
+            <text>备注</text>
+            <textarea onBlur="bindData" data-set="customer.J.other" style="font-size:25rpx;padding-top:20rpx;" placeholder="在这里写下您想对维修工程师说的话~~~" />
+        </view>
+    </view>
+
+
+
+
+
+
+    
+    <view class="btn">
+        <button class="cen_btn mar" type="primary" size="defaultSize"  onTap="validSubmit" hover-class="defaultTap"> 立即下单 </button>
+    </view>
+</view>
+
+
+<import src="../../template/pickerBox/picker-box.axml"/>
+<template is="picker-box" data="{{pick: pick}}"/>
+
+<import src="../../template/locationBox/location-box.axml"/>
+<template is="location-box" data="{{cat: cat}}"/>

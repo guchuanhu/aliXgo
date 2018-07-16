@@ -1,0 +1,18 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/maintenance/maintenance",
+    "pages/main-success/success",
+    "pages/get-main/main",
+    "pages/main-detail/detail",
+    "pages/quick-single/single",
+    "pages/select-fault/fault",
+    "pages/phone-color/color",
+    "pages/phone-model/phone",
+    "pages/select-model/model",
+    "pages/store-search/search"
+  ],
+  "window": {
+    "defaultTitle": "修狗手机同城修"
+  }
+}

@@ -1,0 +1,8 @@
+<view class="container">
+    <view class="word">如果您不确定故障手机的型号请选择其他型号</view>
+    <view class="lists">
+        <view onTap="phone" data-id="{{item.id}}" data-name="{{item.name}}" class="li {{index%2===0?'':'li_border'}} {{phone.length<index+3?'li_border_btn':''}}" a:for="{{phone}}">
+            <view>{{item.name}}</view>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,23 @@
+<template name="location-box">
+    <view a:if="{{cat.show}}" class="location-box">
+        <view class="pv-container location-item">
+            <view class="lp-top">
+                <text onTap="locationClose" class="lp-color">取消</text>
+                <text onTap="locationClose" class="lright">确定</text>
+            </view>
+            <view class="lp-title">
+                所在地区
+            </view>
+            <view class="location-menu">
+                <text a:for="{{cat.menu}}" onTap="menuClick" data-index="{{index}}" class="{{cat.menuChoice===index?'menu-item':''}}">{{item}}</text>
+            </view>
+            <view class="location-content">
+                <view a:for="{{cat.content[cat.menuChoice]}}" onTap="contentClick" data-index="{{index}}" data-menu="{{item.name}}" data-pid="{{item.id}}" class="{{cat.contentChoice[cat.menuChoice]===index?'loca-item':''}}">
+                    <text>{{item.name}}</text>
+                </view>
+            </view>
+            
+        </view>
+    </view>
+</template>
+
